@@ -1,162 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/Title"
+        android:textSize="32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Tips calculator!"
         android:layout_margin="16dp"
-        android:text="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/tv_subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/main_subtitle"
+        android:text="Preencha os campos abaixo para calcular a gorjeta."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-    <TextView
-        android:id="@+id/tv_hint_total_table"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/table_amount_label"
-        app:layout_constraintStart_toStartOf="@+id/tv_subtitle"
-        app:layout_constraintTop_toBottomOf="@+id/tv_subtitle" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_total"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/tv_subtitle"
-        app:layout_constraintStart_toStartOf="@+id/tv_hint_total_table"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hint_total_table">
-
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subtitle">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tie_total"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/table_amount_hint"
             android:inputType="numberDecimal"
-            android:paddingStart="0dp"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
+            android:hint="Digite o valor total da conta."/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_hint_num_people"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/num_people_label"
-        app:layout_constraintStart_toStartOf="@+id/til_total"
-        app:layout_constraintTop_toBottomOf="@+id/til_total" />
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_num_people"
-        android:layout_width="0dp"
+        android:id="@+id/til_number_of_people"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/tv_subtitle"
-        app:layout_constraintStart_toStartOf="@+id/tv_hint_num_people"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hint_num_people">
-
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_total">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_num_people"
+            android:id="@+id/tie_people"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/num_of_people_hint"
             android:inputType="number"
             android:maxLength="2"
-            android:paddingStart="0dp"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
+            android:hint="Digite o número de pessoas na mesa."/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_hint_percentage"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/rg_percentage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/percentage_label"
-        app:layout_constraintStart_toStartOf="@+id/til_num_people"
-        app:layout_constraintTop_toBottomOf="@+id/til_num_people" />
+        app:layout_constraintEnd_toEndOf="@id/til_number_of_people"
+        app:layout_constraintStart_toStartOf="@id/til_number_of_people"
+        app:layout_constraintTop_toBottomOf="@id/til_number_of_people"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rb_option_1"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_percentage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/tv_subtitle"
-        app:layout_constraintStart_toStartOf="@+id/tv_hint_percentage"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hint_percentage">
+        <RadioButton
+            android:id="@+id/rb_option_2"
+            android:layout_marginEnd="16dp"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_percentage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/percentage_tip_hint"
-            android:inputType="number"
-            android:maxLength="3"
-            android:paddingStart="0dp"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15%"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <RadioButton
+            android:id="@+id/rb_option_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%"/>
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_clean"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/clean"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vertical_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/btn_done"
+        android:id="@+id/btn_clean"
+        android:text="Limpar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/calculate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/vertical_guideline" />
+        app:layout_constraintTop_toBottomOf="@+id/rg_percentage"
+        app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+        app:layout_constraintStart_toStartOf="parent"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vertical_guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <Button
+        android:id="@+id/btn_calculate"
+        android:text="Calcular"
+        android:layout_width="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rg_percentage"
+        app:layout_constraintStart_toEndOf="@id/vertical_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_clean"
+        app:layout_constraintStart_toStartOf="@+id/btn_clean"
+        app:layout_constraintEnd_toEndOf="@+id/btn_calculate"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
