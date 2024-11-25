@@ -2,6 +2,9 @@ package com.danilima.layoutapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.danilima.layoutapplication.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 //        val edtPeople = findViewById<TextInputEditText>(R.id.tie_people)
 
 //        btnClean.setOnClickListener {}
-        binding.btnClean.setOnClickListener {  }
         binding.rbOption1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 percentage = 10
@@ -38,15 +40,33 @@ class MainActivity : AppCompatActivity() {
                 percentage = 20
             }
         }
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.num_people,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        binding.spinnerNumberOfPeople.adapter = adapter
+
+        var numberOfPeopleSelected = 0
+        binding.spinnerNumberOfPeople.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                    numberOfPeopleSelected = position
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+            }
         binding.btnCalculate.setOnClickListener {
             val totalTableTemp = binding.tieTotal.text
-            val peopleTemp = binding.tiePeople.text
 
-            if (totalTableTemp?.isEmpty() == true || peopleTemp?.isEmpty() == true) {
-                Snackbar.make(binding.tiePeople, "Preencha todos os campos", Snackbar.LENGTH_LONG).show()
+            if (totalTableTemp?.isEmpty() == true) {
             } else {
                 val totalTable: Float = totalTableTemp.toString().toFloat()
-                val people: Int = peopleTemp.toString().toInt()
+                val people: Int = numberOfPeopleSelected
 
                 val totalTemp = totalTable / people
                 val tips = totalTemp * percentage / 100
@@ -60,7 +80,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnClean.setOnClickListener {
             binding.tvResult.text = ""
-            binding.tiePeople.setText("")
             binding.tieTotal.setText("")
             binding.rbOption1.isChecked = false
             binding.rbOption2.isChecked = false
