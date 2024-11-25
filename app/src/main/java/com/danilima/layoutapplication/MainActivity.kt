@@ -1,12 +1,12 @@
 package com.danilima.layoutapplication
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.danilima.layoutapplication.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,17 +14,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(R.layout.activity_main)
+        //        setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
         var percentage: Int = 0
 
-//        val btnClean = findViewById<Button>(R.id.btn_clean)
-//        val btnCalculate = findViewById<Button>(R.id.btn_calculate)
-//        val edtTotal = findViewById<TextInputEditText>(R.id.tie_total)
-//        val edtPeople = findViewById<TextInputEditText>(R.id.tie_people)
+        //        val btnClear = findViewById<Button>(R.id.btn_clear)
+        //        val btnCalculate = findViewById<Button>(R.id.btn_calculate)
+        //        val edtTotal = findViewById<TextInputEditText>(R.id.tie_total)
+        //        val edtPeople = findViewById<TextInputEditText>(R.id.tie_people)
 
-//        btnClean.setOnClickListener {}
+        //        btnClear.setOnClickListener {}
         binding.rbOption1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 percentage = 10
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.num_people,
-            android.R.layout.simple_spinner_item
+            android.R.layout.simple_spinner_item,
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
         binding.spinnerNumberOfPeople.adapter = adapter
@@ -74,16 +74,34 @@ class MainActivity : AppCompatActivity() {
                 println(totalTemp)
                 println(tips)
                 println(totalWithTips)
-                binding.tvResult.text = "Total with tips: $totalWithTips"
+                //                binding.tvResult.text = "Total with tips: $totalWithTips"
 
+                val intent = Intent(this, SummaryActivity::class.java)
+                intent.apply {
+                    putExtra("totalTable", totalTable)
+                    putExtra("people", people)
+                    putExtra("percentage", percentage)
+                    putExtra("totalAmount", totalWithTips)
+                }
+                clear()
+                startActivity(intent)
             }
         }
-        binding.btnClean.setOnClickListener {
-            binding.tvResult.text = ""
+        binding.btnClear.setOnClickListener {
             binding.tieTotal.setText("")
             binding.rbOption1.isChecked = false
             binding.rbOption2.isChecked = false
             binding.rbOption3.isChecked = false
+            binding.btnClear.setOnClickListener {
+                clear()
+            }
         }
+    }
+
+    private fun clear() {
+        binding.tieTotal.setText("")
+        binding.rbOption1.isChecked = false
+        binding.rbOption2.isChecked = false
+        binding.rbOption3.isChecked = false
     }
 }

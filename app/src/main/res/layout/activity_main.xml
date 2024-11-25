@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Preencha os campos abaixo para calcular a gorjeta."
+        android:text="Fill in the fields below to calculate the tip."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="numberDecimal"
-            android:hint="Digite o valor total da conta."/>
+            android:hint="Enter the total amount of the bill"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
@@ -84,8 +84,8 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btn_clean"
-        android:text="Limpar"
+        android:id="@+id/btn_clear"
+        android:text="Clear"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
@@ -104,7 +104,7 @@
 
     <Button
         android:id="@+id/btn_calculate"
-        android:text="Calcular"
+        android:text="Calculate"
         android:layout_width="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
@@ -114,15 +114,5 @@
         app:layout_constraintStart_toEndOf="@id/vertical_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         />
-
-    <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_clean"
-        app:layout_constraintStart_toStartOf="@+id/btn_clean"
-        app:layout_constraintEnd_toEndOf="@+id/btn_calculate"
-        android:layout_marginTop="16dp"
-        android:textSize="24sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
