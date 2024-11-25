@@ -2,11 +2,9 @@ package com.danilima.layoutapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.danilima.layoutapplication.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,56 +15,17 @@ class MainActivity : AppCompatActivity() {
         //        setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
-        var percentage: Int = 0
-
-        //        val btnClear = findViewById<Button>(R.id.btn_clear)
-        //        val btnCalculate = findViewById<Button>(R.id.btn_calculate)
-        //        val edtTotal = findViewById<TextInputEditText>(R.id.tie_total)
-        //        val edtPeople = findViewById<TextInputEditText>(R.id.tie_people)
-
-        //        btnClear.setOnClickListener {}
-        binding.rbOption1.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                percentage = 10
-            }
-        }
-        binding.rbOption2.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                percentage = 15
-            }
-        }
-        binding.rbOption3.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                percentage = 20
-            }
-        }
-
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.num_people,
-            android.R.layout.simple_spinner_item,
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
-        binding.spinnerNumberOfPeople.adapter = adapter
-
-        var numberOfPeopleSelected = 0
-        binding.spinnerNumberOfPeople.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                    numberOfPeopleSelected = position
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("Not yet implemented")
-                }
-            }
         binding.btnCalculate.setOnClickListener {
             val totalTableTemp = binding.tieTotal.text
+            val numPeopleTemp = binding.tieTotalPeople.text
+            val percentageTemp = binding.tiePercentage.text
 
-            if (totalTableTemp?.isEmpty() == true) {
+            if (totalTableTemp?.isEmpty() == true || numPeopleTemp?.isEmpty() == true || percentageTemp?.isEmpty() == true) {
+                Snackbar.make(binding.tieTotal, "Please fill in all fields", Snackbar.LENGTH_SHORT).show()
             } else {
                 val totalTable: Float = totalTableTemp.toString().toFloat()
-                val people: Int = numberOfPeopleSelected
+                val people: Int = numPeopleTemp.toString().toInt()
+                val percentage: Int = percentageTemp.toString().toInt()
 
                 val totalTemp = totalTable / people
                 val tips = totalTemp * percentage / 100
@@ -74,14 +33,13 @@ class MainActivity : AppCompatActivity() {
                 println(totalTemp)
                 println(tips)
                 println(totalWithTips)
-                //                binding.tvResult.text = "Total with tips: $totalWithTips"
 
                 val intent = Intent(this, SummaryActivity::class.java)
                 intent.apply {
                     putExtra("totalTable", totalTable)
                     putExtra("people", people)
-                    putExtra("percentage", percentage)
                     putExtra("totalAmount", totalWithTips)
+                    putExtra("percentage", percentage)
                 }
                 clear()
                 startActivity(intent)
@@ -89,9 +47,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnClear.setOnClickListener {
             binding.tieTotal.setText("")
-            binding.rbOption1.isChecked = false
-            binding.rbOption2.isChecked = false
-            binding.rbOption3.isChecked = false
             binding.btnClear.setOnClickListener {
                 clear()
             }
@@ -100,8 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun clear() {
         binding.tieTotal.setText("")
-        binding.rbOption1.isChecked = false
-        binding.rbOption2.isChecked = false
-        binding.rbOption3.isChecked = false
+        binding.tieTotalPeople.setText("")
+        binding.tiePercentage.setText("")
     }
 }

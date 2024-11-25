@@ -1,31 +1,20 @@
 <resources>
-    <string name="app_name">Tip Calculator</string>
-    <string-array name="num_people">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-    </string-array>
-    <string name="summary_subtitle">See bellow the summary of your bill</string>
-    <string name="total_table">total table:</string>
-    <string name="num_of_people">num of people:</string>
-    <string name="percentage">percentage:</string>
-    <string name="total">TOTAL:</string>
-    <string name="refresh">refresh</string>
-    <string name="main_subtitle">Fulfill the bellow fields</string>
-    <string name="table_amount_label">Type the table amount:</string>
-    <string name="table_amount_hint">$ 100.00</string>
-    <string name="num_people_label">Num of people:</string>
-    <string name="num_of_people_hint">4</string>
-    <string name="percentage_label">Percentage of tip:</string>
-    <string name="percentage_tip_hint">10%</string>
-    <string name="clean">clean</string>
-    <string name="calculate">calculate</string>
+
+    <string name="app_name">Tips calculator!</string>
+    <string name="subtitle">Fill in the fields below to calculate the tip.</string>
+    <string name="total_amount">Enter the total amount of the bill</string>
+    <string name="total_amount_hint">$ 250</string>
+    <string name="total_people">How many people are going to split the bill?</string>
+    <string name="total_people_hint">2</string>
+    <string name="total_tip">How much do you want to tip?</string>
+    <string name="total_tip_hint">15%</string>
+    <string name="clear">Clear</string>
+    <string name="calculate">Calculate</string>
+    <string name="summary_title">Summary</string>
+    <string name="summary_subtitle">Let\'s see your results:</string>
+    <string name="total_table">Total table:</string>
+    <string name="number_of_people">Number of people:</string>
+    <string name="percentage">Percentage:</string>
+    <string name="total">Total amount:</string>
+    <string name="refresh">Do more maths</string>
 </resources>
