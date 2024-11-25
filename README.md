@@ -1,5 +1,5 @@
 ## Tip Calculator
-Is an Android app to help you to calculate the amount of tip and split the table bill. 
+It's an Android app to help you calculate the amount of tip and split the bill. 
 
 ## Screenshots
 <img src="https://github.com/roquebuarquejr/TipsCalculator/assets/11612508/834f273e-34d8-43bd-bf65-3a7aca73f07e" width="260"/>
