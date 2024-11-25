@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
+    <string-array name="num_people">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
     <string name="summary_subtitle">See bellow the summary of your bill</string>
     <string name="total_table">total table:</string>
     <string name="num_of_people">num of people:</string>

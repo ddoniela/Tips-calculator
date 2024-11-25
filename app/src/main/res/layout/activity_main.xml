@@ -41,30 +41,22 @@
             android:hint="Digite o valor total da conta."/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_number_of_people"
+    <Spinner
+        android:id="@+id/spinner_number_of_people"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_total">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_people"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="number"
-            android:maxLength="2"
-            android:hint="Digite o número de pessoas na mesa."/>
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/til_total"/>
 
     <RadioGroup
         android:id="@+id/rg_percentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/til_number_of_people"
-        app:layout_constraintStart_toStartOf="@id/til_number_of_people"
-        app:layout_constraintTop_toBottomOf="@id/til_number_of_people"
+        app:layout_constraintEnd_toEndOf="@id/spinner_number_of_people"
+        app:layout_constraintStart_toStartOf="@id/spinner_number_of_people"
+        app:layout_constraintTop_toBottomOf="@id/spinner_number_of_people"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
